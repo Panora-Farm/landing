@@ -616,6 +616,13 @@ nav.site-nav {
   margin: 0 auto;
 }
 
+.targets-panel .targets-eyebrow {
+  color: var(--sage-light);
+  font-size: clamp(13px, 1.1vw, 15px);
+  letter-spacing: 0.16em;
+  margin-bottom: clamp(20px, 3vh, 28px);
+}
+
 .targets-title {
   font-size: clamp(44px, 7.5vw, 92px);
   line-height: 1.03;
@@ -650,8 +657,9 @@ nav.site-nav {
 }
 
 .target-row {
+  --row-pad: clamp(44px, 5vw, 64px);
   position: relative;
-  padding-left: clamp(44px, 5vw, 64px);
+  padding-left: var(--row-pad);
   padding-bottom: clamp(52px, 9vh, 96px);
 }
 
@@ -659,10 +667,18 @@ nav.site-nav {
   padding-bottom: 0;
 }
 
+/* Wraps just the value so the timeline dot can sit at the number's mid-line. */
+.target-value-wrap {
+  grid-column: 1;
+  position: relative;
+  margin-bottom: 18px;
+}
+
 .target-dot {
   position: absolute;
-  left: 0;
-  top: 6px;
+  left: calc(-1 * var(--row-pad));
+  top: 50%;
+  transform: translateY(-50%);
   width: 14px;
   height: 14px;
   border-radius: 50%;
@@ -698,7 +714,6 @@ nav.site-nav {
 }
 
 .target-value {
-  grid-column: 1;
   display: flex;
   align-items: baseline;
   font-size: clamp(48px, 6vw, 80px);
@@ -707,7 +722,6 @@ nav.site-nav {
   font-weight: 400;
   color: var(--bone);
   font-variant-numeric: tabular-nums;
-  margin-bottom: 18px;
 }
 
 .target-unit {
@@ -1696,7 +1710,7 @@ footer.site-footer {
   }
 
   .target-row {
-    padding-left: 38px;
+    --row-pad: 38px;
     padding-bottom: clamp(44px, 6vh, 64px);
   }
 
@@ -1870,7 +1884,7 @@ footer.site-footer {
   }
 
   .target-row {
-    padding-left: 34px;
+    --row-pad: 34px;
   }
 
   .targets-title {

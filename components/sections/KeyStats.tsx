@@ -45,7 +45,6 @@ function TargetRow({
 
   return (
     <li ref={rowRef} className="target-row">
-      <span className="target-dot" data-dot data-on={on || undefined} />
       <motion.div
         className="target-body"
         initial={reduce ? false : { opacity: 0, y: 22 }}
@@ -55,11 +54,19 @@ function TargetRow({
         <span className="target-index">
           {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
         </span>
-        <div className="target-value" aria-label={metric.value}>
-          <span aria-hidden="true">{display}</span>
-          <span className="target-unit" aria-hidden="true">
-            {unit}
-          </span>
+        <div className="target-value-wrap">
+          <span
+            className="target-dot"
+            data-dot
+            data-on={on || undefined}
+            aria-hidden="true"
+          />
+          <div className="target-value" aria-label={metric.value}>
+            <span aria-hidden="true">{display}</span>
+            <span className="target-unit" aria-hidden="true">
+              {unit}
+            </span>
+          </div>
         </div>
         <div className="target-label">{metric.label}</div>
         <p className="target-detail">{metric.detail}</p>
@@ -72,12 +79,13 @@ export function KeyStats() {
   const { locale } = useLocale();
   const reduce = !!useReducedMotion();
 
+  const sectionLabel = pick(metrics.sectionLabel, locale);
   const sectionTitle = pick(metrics.sectionTitle, locale);
   const items = pick(metrics.items, locale) as readonly Metric[];
 
   const listRef = useRef<HTMLOListElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const headingInView = useInView(headingRef, { once: true, margin: '-80px' });
+  const headRef = useRef<HTMLDivElement>(null);
+  const headInView = useInView(headRef, { once: true, margin: '-80px' });
 
   // Fill the rail from the first dot to the last as the list scrolls past centre.
   const { scrollYProgress } = useScroll({
@@ -120,19 +128,18 @@ export function KeyStats() {
     <section className="targets-section" aria-label={sectionTitle}>
       <div className="targets-panel">
         <div className="targets-inner">
-          <motion.h2
-            ref={headingRef}
-            className="targets-title"
+          <motion.div
+            ref={headRef}
+            className="targets-head"
             initial={reduce ? false : { opacity: 0, y: 24 }}
             animate={
-              headingInView || reduce
-                ? { opacity: 1, y: 0 }
-                : { opacity: 0, y: 24 }
+              headInView || reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }
             }
             transition={{ duration: 0.7, ease: EASE_OUT }}
           >
-            {sectionTitle}
-          </motion.h2>
+            <p className="section-label targets-eyebrow">{sectionLabel}</p>
+            <h2 className="targets-title">{sectionTitle}</h2>
+          </motion.div>
 
           <ol className="target-list" ref={listRef}>
             <div

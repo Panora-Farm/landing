@@ -131,6 +131,10 @@ export const hero = {
 } as const;
 
 export const metrics = {
+  sectionLabel: {
+    id: 'Target',
+    en: 'Targets',
+  },
   sectionTitle: {
     id: 'Skala Rantai Pasok Berkelanjutan Berbasis Data & Aset Fisik',
     en: 'Data-Driven Sustainable Supply Chain Powered by Physical Assets',
