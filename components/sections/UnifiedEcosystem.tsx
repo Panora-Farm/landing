@@ -79,7 +79,7 @@ function EcoFlowCanvas({
         edges={edges}
         nodeTypes={nodeTypes}
         fitView
-        fitViewOptions={{ padding: 0.08, minZoom: 0.72, maxZoom: 1 }}
+        fitViewOptions={{ padding: 0.06, minZoom: 0.55, maxZoom: 1 }}
         proOptions={{ hideAttribution: true }}
         nodesDraggable={false}
         nodesConnectable={false}
@@ -152,7 +152,7 @@ export function UnifiedEcosystem() {
       rawNodes.map((node, i) => ({
         id: node.num,
         type: 'eco',
-        position: { x: i * 300, y: 0 },
+        position: { x: i * 380, y: 0 },
         draggable: false,
         selectable: false,
         data: {
@@ -173,15 +173,16 @@ export function UnifiedEcosystem() {
         source: rawNodes[i].num,
         target: node.num,
         type: 'smoothstep',
-        style: { stroke: HARVEST, strokeWidth: 1.5 },
+        animated: !reduce,
+        style: { stroke: HARVEST, strokeWidth: 2 },
         markerEnd: {
           type: MarkerType.ArrowClosed,
           color: HARVEST,
-          width: 16,
-          height: 16,
+          width: 20,
+          height: 20,
         },
       })),
-    [rawNodes]
+    [rawNodes, reduce]
   );
 
   return (
