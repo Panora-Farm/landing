@@ -1287,14 +1287,17 @@ nav.site-nav {
 .eco-rf {
   width: 100%;
   height: 660px;
+  /* headroom so a hover-expanded bottom-row node spills into empty space,
+     not onto the next section */
+  margin-bottom: 88px;
   overflow: visible;
 }
 
 .eco-rf .react-flow {
   background: transparent;
-  /* let a node's hover-expanded description spill past the canvas box
-     instead of being clipped */
-  overflow: visible;
+  /* React Flow sets overflow:hidden inline on this wrapper; override it so
+     a node's hover-expanded description isn't clipped at the canvas edge */
+  overflow: visible !important;
 }
 
 .eco-rf .react-flow__pane,
@@ -1364,7 +1367,9 @@ nav.site-nav {
 
 .eco-node-box {
   position: relative;
-  height: 100%;
+  /* no fixed height — React Flow pins the node wrapper to the measured
+     (collapsed) height, and `height:100%` here would trap the expanding
+     description inside it and clip it */
   min-height: 232px;
   background: var(--white);
   border: 1px solid rgba(30, 38, 17, 0.1);
