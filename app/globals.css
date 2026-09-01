@@ -275,17 +275,21 @@ nav.site-nav {
 }
 
 .hero-title {
-  font-size: clamp(38px, 5.8vw, 88px);
-  line-height: 1.04;
-  letter-spacing: -0.035em;
+  font-size: clamp(36px, 8.2vw, 124px);
+  line-height: 1.06;
+  letter-spacing: -0.045em;
   font-weight: 400;
   color: var(--olive-950);
-  max-width: 14em;
-  text-wrap: balance;
+  max-width: 13em;
 }
 
 .hero-title-line {
   display: block;
+}
+
+/* Extra air between the two headline lines without loosening the whole block. */
+.hero-title-line + .hero-title-line {
+  margin-top: 0.12em;
 }
 
 .hero-title-accent {
@@ -312,14 +316,14 @@ nav.site-nav {
   align-items: flex-end;
   justify-content: space-between;
   gap: 40px;
-  margin: clamp(28px, 4vh, 48px) 0 clamp(20px, 3vh, 32px);
+  margin: clamp(36px, 5vh, 64px) 0 clamp(16px, 2.4vh, 26px);
 }
 
 .hero-description {
-  font-size: clamp(16px, 1.3vw, 19px);
-  line-height: 1.55;
+  font-size: clamp(15px, 1.15vw, 18px);
+  line-height: 1.6;
   color: var(--stone);
-  max-width: 44ch;
+  max-width: 40ch;
   font-weight: 400;
 }
 
@@ -335,7 +339,7 @@ nav.site-nav {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 20px;
-  margin-bottom: clamp(28px, 4vh, 48px);
+  margin-bottom: clamp(24px, 3.4vh, 40px);
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -395,13 +399,13 @@ nav.site-nav {
 
 .hero-media-caption {
   flex: 1;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 600;
-  color: rgba(253, 252, 249, 0.92);
+  color: rgba(253, 252, 249, 0.82);
   line-height: 1.4;
-  max-width: 36ch;
+  max-width: 34ch;
 }
 
 .hero-media-dots {
@@ -1614,6 +1618,10 @@ footer.site-footer {
 
   .hero {
     padding-top: 110px;
+  }
+
+  .hero-title {
+    letter-spacing: -0.035em;
   }
 
   .hero-row {

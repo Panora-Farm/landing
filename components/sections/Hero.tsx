@@ -47,6 +47,7 @@ export function Hero({ ready }: HeroProps) {
               text={line.text}
               ready={ready}
               delay={0.1 + idx * 0.12}
+              emphasize={line.emphasize}
             />
           </span>
         ))}

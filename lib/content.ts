@@ -43,19 +43,17 @@ export const nav = {
 export const hero = {
   titleLines: {
     id: [
-      { text: 'Agregator Komoditas', accent: false },
-      { text: 'Berbasis Teknologi & Infrastruktur', accent: false },
-      { text: 'Rantai Pasok Transparan', accent: true },
+      { text: 'Komoditas Indonesia,', accent: false, emphasize: [] },
+      { text: 'terverifikasi dari titik nol.', accent: false, emphasize: ['titik', 'nol'] },
     ],
     en: [
-      { text: 'Tech-Enabled Commodity', accent: false },
-      { text: 'Aggregator & Transparent', accent: false },
-      { text: 'Supply Chain Infrastructure', accent: true },
+      { text: 'Indonesian commodities,', accent: false, emphasize: [] },
+      { text: 'verified from point zero.', accent: false, emphasize: ['point', 'zero'] },
     ],
   },
   description: {
-    id: 'Menghubungkan petani kecil Indonesia dengan pembeli B2B global melalui data rantai pasok anti-manipulasi yang terverifikasi dan memenuhi standar kepatuhan regulasi ekspor.',
-    en: 'Connecting Indonesian smallholder farmers with global B2B buyers through verified, tamper-proof supply chain data that meets export regulatory compliance standards.',
+    id: 'Menghubungkan petani kecil dengan pembeli B2B global lewat data asal-usul first-mile yang terverifikasi.',
+    en: 'Connecting smallholder farms to global B2B buyers with verified first-mile origin data.',
   },
   primaryCta: {
     label: {
@@ -72,14 +70,8 @@ export const hero = {
     href: site.urls.partnership,
   },
   trustBadges: {
-    id: [
-      'Selaras dengan UN SDG 12: Responsible Consumption and Production',
-      'EUDR-Ready Digital Product Passport (DPP)',
-    ],
-    en: [
-      'Aligned with UN SDG 12: Responsible Consumption and Production',
-      'EUDR-Ready Digital Product Passport (DPP)',
-    ],
+    id: ['Selaras UN SDG 12', 'Digital Product Passport siap-EUDR'],
+    en: ['UN SDG 12 aligned', 'EUDR-ready Digital Product Passport'],
   },
   slides: {
     id: [

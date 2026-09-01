@@ -96,7 +96,7 @@ unless the brief changes.
 
 | Style | Size | Tracking / weight / leading |
 |---|---|---|
-| Hero title | `clamp(38px, 5.8vw, 88px)` | `-0.035em` · 400 · `1.04` · `text-wrap: balance`, line-by-line |
+| Hero title | `clamp(36px, 8.2vw, 124px)` | `-0.045em` (`-0.035em` ≤900px) · 400 · `1.06` + `0.12em` between lines · line-by-line; keep the headline to 2 short lines with the payoff phrase in `<em>` |
 | Section title (`.section-title`) | `clamp(34px, 4.5vw, 58px)` | `-0.03em` · 400 · `1.04` |
 | Drench statement / problem title | `clamp(34px, 5vw, 64px)` | `-0.032em` · 400 · `1.08` |
 | Final CTA title | `clamp(40px, 6vw, 84px)` | `-0.035em` · 400 · `1.02` · bone |
