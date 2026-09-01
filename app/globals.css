@@ -1278,62 +1278,54 @@ nav.site-nav {
   margin-bottom: 0;
 }
 
-.eco-panel {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  background: var(--white);
-  border: 1px solid rgba(30, 38, 17, 0.08);
-  border-radius: var(--radius-panel);
-  box-shadow: 0 4px 32px rgba(13, 43, 26, 0.06);
-  overflow: hidden;
-}
-
-.eco-panel-line {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--harvest);
-  transform-origin: left center;
-}
-
 .eco-flow {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  column-gap: clamp(36px, 4vw, 56px);
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .eco-node {
   position: relative;
-  padding: clamp(28px, 3vw, 44px) clamp(20px, 2.2vw, 32px);
 }
 
-.eco-node + .eco-node {
-  border-left: 1px solid rgba(30, 38, 17, 0.08);
-}
-
-.eco-node-link {
+/* connector between boxes */
+.eco-node-arrow {
   position: absolute;
-  top: clamp(30px, 3vw, 46px);
-  left: -9px;
+  top: 46px;
+  left: calc(clamp(36px, 4vw, 56px) / -2);
+  transform: translate(-50%, -50%);
   display: grid;
   place-items: center;
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   color: var(--harvest);
+  z-index: 1;
+}
+
+.eco-node-box {
+  height: 100%;
+  min-height: 168px;
   background: var(--white);
+  border: 1px solid rgba(30, 38, 17, 0.1);
+  border-radius: 16px;
+  padding: 24px 22px 22px;
+  transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .eco-node-num {
   display: block;
-  font-size: clamp(30px, 3vw, 40px);
+  font-size: clamp(26px, 2.4vw, 34px);
   font-weight: 300;
   letter-spacing: -0.03em;
   line-height: 1;
-  color: rgba(30, 38, 17, 0.26);
-  margin-bottom: 18px;
+  color: rgba(30, 38, 17, 0.24);
+  margin-bottom: 14px;
 }
 
 .eco-node--hub .eco-node-num {
@@ -1341,16 +1333,16 @@ nav.site-nav {
 }
 
 .eco-node-title {
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.25;
   color: var(--olive-950);
-  margin-bottom: 10px;
 }
 
 .eco-node-tag {
   display: inline-block;
+  margin-top: 10px;
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1359,13 +1351,50 @@ nav.site-nav {
   background: rgba(217, 130, 43, 0.1);
   border-radius: 9999px;
   padding: 5px 12px;
-  margin-bottom: 14px;
+}
+
+/* description — collapsed at rest, revealed on hover / touch */
+.eco-node-desc-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .eco-node-body {
-  font-size: 14px;
-  line-height: 1.65;
+  overflow: hidden;
+  min-height: 0;
+  padding-top: 14px;
+  font-size: 13.5px;
+  line-height: 1.6;
   color: var(--stone);
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .eco-node-box:hover {
+    border-color: rgba(217, 130, 43, 0.5);
+    box-shadow: 0 12px 32px rgba(13, 43, 26, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .eco-node-box:hover .eco-node-desc-wrap {
+    grid-template-rows: 1fr;
+  }
+
+  .eco-node-box:hover .eco-node-body {
+    opacity: 1;
+  }
+}
+
+@media (hover: none) {
+  .eco-node-desc-wrap {
+    grid-template-rows: 1fr;
+  }
+
+  .eco-node-body {
+    opacity: 1;
+  }
 }
 
 /* ── Console preview ── */
@@ -2247,17 +2276,26 @@ footer.site-footer {
 
   .eco-flow {
     grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 40px;
   }
 
-  .eco-node + .eco-node {
-    border-left: none;
-    border-top: 1px solid rgba(30, 38, 17, 0.08);
+  .eco-node-arrow {
+    top: -20px;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
   }
 
-  .eco-node-link {
-    top: -10px;
-    left: clamp(20px, 2.2vw, 32px);
-    transform: rotate(90deg);
+  .eco-node-box {
+    min-height: 0;
+  }
+
+  .eco-node-desc-wrap {
+    grid-template-rows: 1fr;
+  }
+
+  .eco-node-body {
+    opacity: 1;
   }
 
   .console-preview-body {
