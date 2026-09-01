@@ -57,16 +57,35 @@ function EcoBox({ data }: { data: EcoData }) {
 function EcoNode({ data }: NodeProps<EcoNodeType>) {
   return (
     <>
-      <Handle type="target" position={Position.Left} isConnectable={false} />
+      <Handle id="t-left" type="target" position={Position.Left} isConnectable={false} />
+      <Handle id="t-top" type="target" position={Position.Top} isConnectable={false} />
+      <Handle id="t-right" type="target" position={Position.Right} isConnectable={false} />
       <EcoBox data={data} />
-      <Handle type="source" position={Position.Right} isConnectable={false} />
+      <Handle id="s-right" type="source" position={Position.Right} isConnectable={false} />
+      <Handle id="s-bottom" type="source" position={Position.Bottom} isConnectable={false} />
+      <Handle id="s-left" type="source" position={Position.Left} isConnectable={false} />
     </>
   );
 }
 
 const nodeTypes = { eco: EcoNode };
 
-const FIT_OPTIONS = { padding: 0.02, minZoom: 0.4, maxZoom: 2.4 } as const;
+const FIT_OPTIONS = { padding: 0.04, minZoom: 0.35, maxZoom: 2.4 } as const;
+
+// 01 top-left, 02 top-right, 03 bottom-right, 04 bottom-left
+const NODE_POS = [
+  { x: 0, y: 0 },
+  { x: 700, y: 0 },
+  { x: 700, y: 415 },
+  { x: 0, y: 415 },
+] as const;
+
+// per edge (01->02, 02->03, 03->04): which side leaves / which side arrives
+const EDGE_HANDLES = [
+  { sourceHandle: 's-right', targetHandle: 't-left' },
+  { sourceHandle: 's-bottom', targetHandle: 't-top' },
+  { sourceHandle: 's-left', targetHandle: 't-right' },
+] as const;
 
 /** Keep the graph filling the canvas as the viewport width changes. */
 function FitOnResize() {
@@ -101,6 +120,8 @@ function EcoFlowCanvas({
         nodeTypes={nodeTypes}
         fitView
         fitViewOptions={FIT_OPTIONS}
+        minZoom={0.3}
+        maxZoom={2.5}
         proOptions={{ hideAttribution: true }}
         nodesDraggable={false}
         nodesConnectable={false}
@@ -175,7 +196,10 @@ export function UnifiedEcosystem() {
       rawNodes.map((node, i) => ({
         id: node.num,
         type: 'eco',
-        position: { x: i * 372, y: 0 },
+        // 2x2 layout, flowing clockwise:  01 -> 02
+        //                                  |     |
+        //                                 04 <- 03
+        position: NODE_POS[i] ?? { x: i * 372, y: 0 },
         draggable: false,
         selectable: false,
         data: {
@@ -195,6 +219,7 @@ export function UnifiedEcosystem() {
         id: `eco-e${i}`,
         source: rawNodes[i].num,
         target: node.num,
+        ...EDGE_HANDLES[i],
         type: 'smoothstep',
         animated: !reduce,
         style: { stroke: HARVEST, strokeWidth: 2 },
