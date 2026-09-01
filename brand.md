@@ -98,7 +98,9 @@ unless the brief changes.
 |---|---|---|
 | Hero title | `clamp(36px, 8.2vw, 124px)` | `-0.045em` (`-0.035em` ≤900px) · 400 · `1.06` + `0.12em` between lines · line-by-line; keep the headline to 2 short lines with the payoff phrase in `<em>` |
 | Section title (`.section-title`) | `clamp(34px, 4.5vw, 58px)` | `-0.03em` · 400 · `1.04` |
+| Maximized section headline | `clamp(36px, 6.4vw, 84px)` | `-0.037em` · 400 · `1.02` · `max-width: 20–22ch` · `text-wrap: balance` — hero-scale opener used on the "How Panora Works" and "Commodity Portfolio" section headers to make the statement the loudest line in the section |
 | Drench statement / problem title | `clamp(34px, 5vw, 64px)` | `-0.032em` · 400 · `1.08` |
+| Problem roll-up headline (`.problem-bridge-title`) | `clamp(34px, 5.3vw, 68px)` | `-0.034em` · 400 · `1.05` — the maximized treatment on the bone→olive bridge frame |
 | Final CTA title | `clamp(40px, 6vw, 84px)` | `-0.035em` · 400 · `1.02` · bone |
 | Stat value | `clamp(40px, 5vw, 64px)` | `-0.03em` · 400 · `1` |
 | Card / node title | 18–24px | `-0.02em` · 500 |

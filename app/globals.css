@@ -776,7 +776,12 @@ nav.site-nav {
 
 .problem-bridge .problem-bridge-title {
   color: var(--olive-950);
-  font-size: clamp(30px, 4.2vw, 50px);
+  /* Maximized: pushed toward the hero register so the problem framing
+     lands as the loudest line in the section. Still weight 400 — scale
+     and negative tracking carry it, per brand.md. */
+  font-size: clamp(34px, 5.3vw, 68px);
+  line-height: 1.05;
+  letter-spacing: -0.034em;
   margin: 0 auto;
   max-width: none;
   text-wrap: normal;
@@ -809,7 +814,7 @@ nav.site-nav {
 }
 
 .container-scroll-header {
-  max-width: 68rem;
+  max-width: 76rem;
   margin: 0 auto clamp(28px, 6vh, 64px);
   text-align: center;
   will-change: transform;
@@ -1263,7 +1268,7 @@ nav.site-nav {
   padding: 7px 14px;
 }
 
-/* ── Unified ecosystem ── */
+/* ── How Panora works ── */
 .ecosystem-flow-section {
   background: var(--bone);
   padding: clamp(100px, 14vh, 160px) clamp(20px, 6vw, 80px);
@@ -1271,64 +1276,220 @@ nav.site-nav {
 
 .ecosystem-flow-header {
   max-width: 1200px;
-  margin: 0 auto 64px;
+  margin: 0 auto 56px;
 }
 
 .ecosystem-flow-header .section-title {
   margin-bottom: 0;
+  /* Maximized headline — hero-scale, weight 400, tight tracking, wraps
+     to 2–3 lines within a narrow measure (see brand.md type scale). */
+  font-size: clamp(36px, 6.4vw, 84px);
+  line-height: 1.02;
+  letter-spacing: -0.037em;
+  max-width: 20ch;
+  text-wrap: balance;
 }
 
-.ecosystem-flow {
+.eco-flow-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* ── React Flow canvas (desktop) — 2x2 flow ── */
+.eco-rf {
+  width: 100%;
+  height: 660px;
+  /* headroom so a hover-expanded bottom-row node spills into empty space,
+     not onto the next section */
+  margin-bottom: 88px;
+  overflow: visible;
+}
+
+.eco-rf .react-flow {
+  background: transparent;
+  /* React Flow sets overflow:hidden inline on this wrapper; override it so
+     a node's hover-expanded description isn't clipped at the canvas edge */
+  overflow: visible !important;
+}
+
+.eco-rf .react-flow__pane,
+.eco-rf .react-flow__node {
+  cursor: default;
+}
+
+.eco-rf .react-flow__node {
+  width: 340px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: left;
+  box-shadow: none;
+  /* React Flow zeroes pointer-events on non-interactive nodes; we need
+     :hover on the box for the description reveal */
+  pointer-events: auto !important;
+}
+
+.eco-rf .react-flow__handle {
+  width: 6px;
+  height: 6px;
+  min-width: 0;
+  min-height: 0;
+  border: none;
+  background: var(--harvest);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.eco-rf .react-flow__attribution {
+  display: none;
+}
+
+/* ── Stacked fallback (<=900px / no-JS) ── */
+.eco-flow {
+  list-style: none;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  column-gap: clamp(36px, 4vw, 56px);
+  align-items: start;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.ecosystem-flow-node {
+.eco-node {
   position: relative;
+}
+
+/* connector between boxes */
+.eco-node-arrow {
+  position: absolute;
+  top: 54px;
+  left: calc(clamp(36px, 4vw, 56px) / -2);
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  color: var(--harvest);
+  z-index: 1;
+}
+
+.eco-node-box {
+  position: relative;
+  /* no fixed height — React Flow pins the node wrapper to the measured
+     (collapsed) height, and `height:100%` here would trap the expanding
+     description inside it and clip it */
+  min-height: 232px;
   background: var(--white);
-  border: 1px solid rgba(30, 38, 17, 0.08);
+  border: 1px solid rgba(30, 38, 17, 0.1);
   border-radius: 18px;
-  padding: 28px 24px;
+  padding: 34px 32px 32px;
+  transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.ecosystem-flow-num {
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--sage);
-  margin-bottom: 12px;
+.eco-node-num {
+  display: block;
+  font-size: clamp(34px, 3vw, 44px);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: rgba(30, 38, 17, 0.24);
+  margin-bottom: 18px;
 }
 
-.ecosystem-flow-title {
-  font-size: 20px;
+.eco-node--hub .eco-node-num {
+  color: var(--harvest-deep);
+}
+
+.eco-node-title {
+  font-size: 25px;
   font-weight: 500;
   letter-spacing: -0.02em;
-  color: var(--olive-950);
-  margin-bottom: 6px;
   line-height: 1.2;
+  color: var(--olive-950);
 }
 
-.ecosystem-flow-subtitle {
-  font-size: 12px;
-  letter-spacing: 0.08em;
+.eco-node-tag {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 600;
   color: var(--harvest-deep);
-  margin-bottom: 12px;
+  background: rgba(217, 130, 43, 0.1);
+  border-radius: 9999px;
+  padding: 6px 13px;
 }
 
-.ecosystem-flow-body {
-  font-size: 14px;
-  line-height: 1.65;
+/* hover affordance — sits opposite the number */
+.eco-node-cue {
+  position: absolute;
+  top: 30px;
+  right: 28px;
+  width: 20px;
+  height: 20px;
   color: var(--stone);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.ecosystem-flow-arrow {
-  display: none;
+/* description — collapsed at rest, revealed on hover / touch */
+.eco-node-desc-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.eco-node-body {
+  overflow: hidden;
+  min-height: 0;
+  padding-top: 16px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--stone);
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .eco-node-box:hover {
+    border-color: rgba(217, 130, 43, 0.5);
+    box-shadow: 0 12px 32px rgba(13, 43, 26, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .eco-node-box:hover .eco-node-desc-wrap {
+    grid-template-rows: 1fr;
+  }
+
+  .eco-node-box:hover .eco-node-body {
+    opacity: 1;
+  }
+
+  .eco-node-box:hover .eco-node-cue {
+    transform: rotate(45deg);
+    color: var(--harvest-deep);
+  }
+}
+
+@media (hover: none) {
+  .eco-node-desc-wrap {
+    grid-template-rows: 1fr;
+  }
+
+  .eco-node-body {
+    opacity: 1;
+  }
+
+  .eco-node-cue {
+    display: none;
+  }
 }
 
 /* ── Console preview ── */
@@ -1479,70 +1640,189 @@ nav.site-nav {
   color: var(--sage-light);
 }
 
-/* ── Commodities ── */
+/* ── Commodity portfolio ── */
 .commodities-section {
   background: var(--bone);
-  padding: 120px clamp(20px, 4vw, 60px);
+  padding: clamp(100px, 14vh, 160px) clamp(20px, 4vw, 60px);
 }
 
 .commodities-header {
   max-width: 1200px;
-  margin: 0 auto 64px;
+  margin: 0 auto 56px;
 }
 
 .commodities-header .section-title {
   margin-bottom: 0;
+  /* Maximized headline — matches the "How Panora Works" treatment. */
+  font-size: clamp(36px, 6.4vw, 84px);
+  line-height: 1.02;
+  letter-spacing: -0.037em;
+  max-width: 22ch;
+  text-wrap: balance;
 }
 
 .commodities-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(16px, 1.6vw, 24px);
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .commodities-grid-4 {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.commodity-card-outer {
+  display: flex;
 }
 
 .commodity-card {
-  border-radius: 18px;
-  overflow: hidden;
-  background: var(--white);
-  border: 1px solid rgba(30, 38, 17, 0.08);
-  display: flex;
-  flex-direction: column;
-}
-
-.commodity-image {
   position: relative;
+  isolation: isolate;
+  display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
+  border-radius: 20px;
   overflow: hidden;
+  background: var(--olive-950);
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1) 0.08s;
 }
 
-.commodity-image img {
+.commodity-card-img {
   object-fit: cover;
+  z-index: 0;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.commodity-info {
-  padding: 28px 24px 32px;
+/* legibility wash over the photo at rest */
+.commodity-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(30, 38, 17, 0.5) 0%,
+    rgba(30, 38, 17, 0) 32%,
+    rgba(30, 38, 17, 0) 44%,
+    rgba(30, 38, 17, 0.7) 100%
+  );
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* the harvest "blob" — a circular wipe anchored to the top-right corner */
+.commodity-blob {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--harvest);
+  clip-path: circle(0% at 100% 0%);
+  transition: clip-path 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.commodity-content {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(20px, 2.4vw, 32px);
+}
+
+.commodity-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.commodity-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: currentColor;
+}
+
+.commodity-eyebrow::before {
+  content: "[ ";
+}
+
+.commodity-eyebrow::after {
+  content: " ]";
+}
+
+.commodity-arrow {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: var(--harvest);
+  color: var(--olive-950);
+  transition: background-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .commodity-title {
-  font-size: 24px;
+  font-size: clamp(24px, 2.6vw, 34px);
   font-weight: 500;
-  letter-spacing: -0.02em;
-  color: var(--olive-950);
-  margin-bottom: 16px;
-  line-height: 1.2;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+  color: currentColor;
+}
+
+.commodity-desc-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .commodity-desc {
+  overflow: hidden;
+  min-height: 0;
+  max-width: 42ch;
+  margin-top: 12px;
   font-size: 14px;
-  line-height: 1.65;
-  color: var(--stone);
+  line-height: 1.6;
+  color: currentColor;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .commodity-card:is(:hover, :focus-visible) {
+    color: var(--olive-950);
+  }
+
+  .commodity-card:is(:hover, :focus-visible) .commodity-blob {
+    clip-path: circle(150% at 100% 0%);
+  }
+
+  .commodity-card:is(:hover, :focus-visible) .commodity-scrim {
+    opacity: 0;
+  }
+
+  .commodity-card:is(:hover, :focus-visible) .commodity-card-img {
+    transform: scale(1.04);
+  }
+
+  .commodity-card:is(:hover, :focus-visible) .commodity-arrow {
+    background: transparent;
+    transform: translate(3px, -3px);
+  }
+
+  .commodity-card:is(:hover, :focus-visible) .commodity-desc-wrap {
+    grid-template-rows: 1fr;
+  }
+
+  .commodity-card:is(:hover, :focus-visible) .commodity-desc {
+    opacity: 1;
+  }
 }
 
 /* ── Why Panora ── */
@@ -2051,9 +2331,10 @@ footer.site-footer {
     padding: 80px 24px;
   }
 
-  .commodities-grid {
+  .commodities-grid,
+  .commodities-grid-4 {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
 
   .container-scroll {
@@ -2094,18 +2375,28 @@ footer.site-footer {
     justify-self: start;
   }
 
-  .ecosystem-flow {
+  .eco-flow {
     grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 40px;
   }
 
-  .ecosystem-flow-arrow {
-    display: block;
-    position: absolute;
-    right: 24px;
-    bottom: 20px;
-    font-size: 20px;
-    color: var(--harvest);
-    transform: rotate(90deg);
+  .eco-node-arrow {
+    top: -20px;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .eco-node-box {
+    min-height: 0;
+  }
+
+  .eco-node-desc-wrap {
+    grid-template-rows: 1fr;
+  }
+
+  .eco-node-body {
+    opacity: 1;
   }
 
   .console-preview-body {
@@ -2114,10 +2405,6 @@ footer.site-footer {
 
   .console-sidebar {
     display: none;
-  }
-
-  .commodities-grid-4 {
-    grid-template-columns: 1fr 1fr;
   }
 
   .why-grid {
@@ -2260,11 +2547,7 @@ footer.site-footer {
   }
 
   .commodity-title {
-    font-size: 22px;
-  }
-
-  .commodities-grid-4 {
-    grid-template-columns: 1fr;
+    font-size: clamp(22px, 6.5vw, 28px);
   }
 
   .faq-section {

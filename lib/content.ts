@@ -541,15 +541,21 @@ export const consolePreview = {
 } as const;
 
 export const commodities = {
+  label: {
+    id: 'Portofolio Komoditas',
+    en: 'Commodity Portfolio',
+  },
   title: {
     id: 'Komoditas Pertanian & Perkebunan Unggulan',
     en: 'Core Agricultural & Plantation Commodities',
   },
+  href: site.urls.marketplace,
   items: {
     id: [
       {
         id: 'coffee',
         title: 'Kopi (Coffee Beans)',
+        tag: 'Arabica & Robusta',
         description:
           'Greenbean Arabica Garut & Robusta Sumatra Selatan pilihan dengan keterlacakan asal-usul lahan.',
         image: '/coffee.jpg',
@@ -557,6 +563,7 @@ export const commodities = {
       {
         id: 'cocoa',
         title: 'Kakao (Cocoa Beans)',
+        tag: 'Biji fermentasi',
         description:
           'Biji kakao berkualitas tinggi dengan keterlacakan asal-usul lahan dan sertifikasi petani kecil.',
         image: '/chili.jpg',
@@ -564,6 +571,7 @@ export const commodities = {
       {
         id: 'coconut',
         title: 'Derivatif Kelapa',
+        tag: 'VCO & turunan',
         description:
           'Produk olahan kelapa terstandarisasi untuk pasar internasional dengan asal-usul terverifikasi.',
         image: '/padi.jpg',
@@ -571,6 +579,7 @@ export const commodities = {
       {
         id: 'greenhouse',
         title: 'Hortikultura Greenhouse',
+        tag: 'Hidroponik B2B',
         description:
           'Hasil panen hidroponik premium untuk pasokan B2B domestik dengan standar kualitas terjamin.',
         image: '/hero2.jpg',
@@ -580,6 +589,7 @@ export const commodities = {
       {
         id: 'coffee',
         title: 'Coffee Beans',
+        tag: 'Arabica & Robusta',
         description:
           'Premium Garut Arabica & South Sumatra Robusta green beans with full land-origin traceability.',
         image: '/coffee.jpg',
@@ -587,6 +597,7 @@ export const commodities = {
       {
         id: 'cocoa',
         title: 'Cocoa Beans',
+        tag: 'Fermented beans',
         description:
           'High-grade cocoa beans with land-origin traceability and smallholder farmer certification.',
         image: '/chili.jpg',
@@ -594,6 +605,7 @@ export const commodities = {
       {
         id: 'coconut',
         title: 'Coconut Derivatives',
+        tag: 'VCO & derivatives',
         description:
           'Standardized coconut processed products for international markets with verified origins.',
         image: '/padi.jpg',
@@ -601,6 +613,7 @@ export const commodities = {
       {
         id: 'greenhouse',
         title: 'Greenhouse Horticulture',
+        tag: 'B2B hydroponic',
         description:
           'Premium hydroponic harvests for domestic B2B supply with guaranteed quality standards.',
         image: '/hero2.jpg',
