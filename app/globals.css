@@ -1309,6 +1309,9 @@ nav.site-nav {
   font-size: inherit;
   text-align: left;
   box-shadow: none;
+  /* React Flow zeroes pointer-events on non-interactive nodes; we need
+     :hover on the box for the description reveal */
+  pointer-events: auto !important;
 }
 
 .eco-rf .react-flow__handle {
@@ -1356,6 +1359,7 @@ nav.site-nav {
 }
 
 .eco-node-box {
+  position: relative;
   height: 100%;
   min-height: 168px;
   background: var(--white);
@@ -1402,6 +1406,18 @@ nav.site-nav {
   padding: 5px 12px;
 }
 
+/* hover affordance — sits opposite the number */
+.eco-node-cue {
+  position: absolute;
+  top: 22px;
+  right: 20px;
+  width: 18px;
+  height: 18px;
+  color: var(--stone);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 /* description — collapsed at rest, revealed on hover / touch */
 .eco-node-desc-wrap {
   display: grid;
@@ -1434,6 +1450,11 @@ nav.site-nav {
   .eco-node-box:hover .eco-node-body {
     opacity: 1;
   }
+
+  .eco-node-box:hover .eco-node-cue {
+    transform: rotate(45deg);
+    color: var(--harvest-deep);
+  }
 }
 
 @media (hover: none) {
@@ -1443,6 +1464,10 @@ nav.site-nav {
 
   .eco-node-body {
     opacity: 1;
+  }
+
+  .eco-node-cue {
+    display: none;
   }
 }
 

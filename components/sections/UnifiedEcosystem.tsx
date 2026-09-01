@@ -32,6 +32,17 @@ type EcoNodeType = Node<EcoData, 'eco'>;
 function EcoBox({ data }: { data: EcoData }) {
   return (
     <div className={`eco-node-box${data.hub ? ' eco-node-box--hub' : ''}`}>
+      <svg
+        className="eco-node-cue"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        aria-hidden
+      >
+        <path d="M12 5v14M5 12h14" />
+      </svg>
       <span className="eco-node-num">{data.num}</span>
       <h3 className="eco-node-title">{data.title}</h3>
       {data.subtitle ? <span className="eco-node-tag">{data.subtitle}</span> : null}
