@@ -1258,11 +1258,11 @@ nav.site-nav {
   background: var(--white);
   border: 1px solid rgba(30, 38, 17, 0.08);
   border-radius: 18px;
-  padding: 32px 28px;
+  padding: 28px;
   display: grid;
   grid-template-columns: 36px 1fr;
   gap: 16px;
-  align-items: start;
+  align-items: center;
 }
 
 .why-check {
@@ -1283,15 +1283,6 @@ nav.site-nav {
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--olive-950);
-  margin-bottom: 8px;
-  grid-column: 2;
-  margin-top: 6px;
-}
-
-.why-card-body {
-  font-size: 14px;
-  line-height: 1.65;
-  color: var(--stone);
   grid-column: 2;
 }
 

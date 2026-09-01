@@ -33,12 +33,12 @@ function LandingContent() {
       <SiteNav ready={ready} />
       <main>
         <Hero ready={ready} />
-        <KeyStats />
         <ProblemSection />
-        <ChainOfCustody />
         <UnifiedEcosystem />
-        <ConsolePreview />
         <CommodityPortfolio />
+        <ChainOfCustody />
+        <ConsolePreview />
+        <KeyStats />
         <WhyPanora />
         <FAQ />
         <FinalCta />

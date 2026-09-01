@@ -554,40 +554,16 @@ export const whyPanora = {
   },
   items: {
     id: [
-      {
-        title: '100% Automated GPS Geotagging',
-        body: 'Verifikasi titik nol lahan yang langsung terhubung ke sistem.',
-      },
-      {
-        title: 'Built-in Digital Product Passport',
-        body: 'Ekspor laporan kepatuhan EUDR dan ESG dalam satu klik.',
-      },
-      {
-        title: 'Zero Friction B2B Integration',
-        body: 'Integrasi sistem mudah via API dan Enterprise Single Sign-On (SSO).',
-      },
-      {
-        title: 'Corporate Trade Finance Access',
-        body: 'Jaminan penyerapan hasil panen dan pembiayaan perdagangan terstruktur.',
-      },
+      { title: '100% Automated GPS Geotagging' },
+      { title: 'Built-in Digital Product Passport' },
+      { title: 'Zero Friction B2B Integration' },
+      { title: 'Corporate Trade Finance Access' },
     ],
     en: [
-      {
-        title: '100% Automated GPS Geotagging',
-        body: 'Point-zero land verification directly connected to the system.',
-      },
-      {
-        title: 'Built-in Digital Product Passport',
-        body: 'Export EUDR and ESG compliance reports in one click.',
-      },
-      {
-        title: 'Zero Friction B2B Integration',
-        body: 'Easy system integration via API and Enterprise Single Sign-On (SSO).',
-      },
-      {
-        title: 'Corporate Trade Finance Access',
-        body: 'Guaranteed off-take and structured trade finance for partners.',
-      },
+      { title: '100% Automated GPS Geotagging' },
+      { title: 'Built-in Digital Product Passport' },
+      { title: 'Zero Friction B2B Integration' },
+      { title: 'Corporate Trade Finance Access' },
     ],
   },
 } as const;

@@ -31,7 +31,6 @@ export function WhyPanora() {
               ✓
             </div>
             <h3 className="why-card-title">{item.title}</h3>
-            <p className="why-card-body">{item.body}</p>
           </motion.article>
         ))}
       </div>
