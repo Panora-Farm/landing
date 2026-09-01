@@ -199,45 +199,111 @@ export const problem = {
   },
   titleLines: {
     id: [
-      'Menghapus friksi pasar',
-      'komoditas pertanian',
-      'hulu ke hilir',
+      'Menghapus friksi pasar komoditas',
+      'pertanian, hulu ke hilir',
     ],
     en: [
-      'Removing agricultural',
-      'commodity market friction',
-      'upstream to downstream',
+      'Removing agricultural commodity',
+      'market friction, upstream to downstream',
     ],
   },
   stakeholders: {
     id: [
       {
-        role: 'Bagi Petani Kecil (Hulu)',
+        role: 'Petani Kecil (Hulu)',
         body: 'Mengakhiri ketergantungan pada rantai perantara yang tidak transparan, dan membuka akses penyerapan hasil panen dengan harga yang adil serta skema pendanaan kerja.',
       },
       {
-        role: 'Bagi Pembeli B2B Global (Hilir)',
+        role: 'Pembeli B2B Global (Hilir)',
         body: 'Memenuhi mandat regulasi ekspor ketat seperti EUDR tanpa risiko denda atau larangan impor, didukung bukti asal-usul komoditas yang auditable.',
       },
       {
-        role: 'Bagi Penyedia Likuiditas / Investor',
+        role: 'Penyedia Likuiditas / Investor',
         body: 'Menyediakan mekanisme pendanaan perdagangan yang transparan dan aman, berbasis inventaris barang fisik yang tersimpan di gudang terverifikasi.',
       },
     ],
     en: [
       {
-        role: 'For Smallholder Farmers (Upstream)',
+        role: 'Smallholder Farmers (Upstream)',
         body: 'Ending dependence on opaque middlemen chains, and opening fair off-take access with transparent pricing and working-capital schemes.',
       },
       {
-        role: 'For Global B2B Buyers (Downstream)',
+        role: 'Global B2B Buyers (Downstream)',
         body: 'Meeting strict export mandates like the EU Deforestation Regulation without fines or import bans, backed by auditable commodity origin proof.',
       },
       {
-        role: 'For Liquidity Providers / Investors',
+        role: 'Liquidity Providers / Investors',
         body: 'Delivering transparent, secure trade finance mechanisms backed by physical inventory held in verified warehouses.',
       },
     ],
+  },
+  intro: {
+    id: [
+      'Satu rantai pasok komoditas.',
+      'Tiga pihak menanggung <em>friksinya</em>.',
+    ],
+    en: [
+      'One commodity supply chain.',
+      'Three parties have carried its <em>friction</em>.',
+    ],
+  },
+  frame: {
+    id: {
+      url: 'console.panora.farm',
+      title: 'Pelacakan Batch — Koridor Garut',
+      export: 'Export Laporan EUDR',
+      nav: ['Dashboard', 'Batch Tracking', 'Laporan EUDR', 'Trade Finance'],
+      rows: [
+        {
+          party: 'Petani · Hulu',
+          item: 'Kopi Arabica Garut · poligon GPS',
+          status: 'Terverifikasi',
+        },
+        {
+          party: 'Pembeli · Hilir',
+          item: 'Laporan uji tuntas EUDR',
+          status: 'Siap ekspor',
+        },
+        {
+          party: 'Likuiditas',
+          item: 'Inventaris gudang terverifikasi',
+          status: 'Terjamin',
+        },
+      ],
+      stats: [
+        '2.800 Ha ter-mapping poligon',
+        'Fase 1: 3.500+ petani',
+        'Export EUDR 1 klik',
+      ],
+    },
+    en: {
+      url: 'console.panora.farm',
+      title: 'Batch Tracking — Garut Corridor',
+      export: 'Export EUDR Report',
+      nav: ['Dashboard', 'Batch Tracking', 'EUDR Reports', 'Trade Finance'],
+      rows: [
+        {
+          party: 'Farmer · Upstream',
+          item: 'Garut Arabica · GPS polygon',
+          status: 'Verified',
+        },
+        {
+          party: 'Buyer · Downstream',
+          item: 'EUDR due-diligence report',
+          status: 'Export-ready',
+        },
+        {
+          party: 'Liquidity',
+          item: 'Verified warehouse inventory',
+          status: 'Backed',
+        },
+      ],
+      stats: [
+        '2,800 Ha polygon-mapped',
+        'Phase 1: 3,500+ farmers',
+        '1-click EUDR export',
+      ],
+    },
   },
 } as const;
 
