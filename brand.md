@@ -138,8 +138,9 @@ That is the only in-heading highlight device.
 ## 4. Shape, elevation, spacing
 
 - **Radius:** `14px` (small / mobile media) · `16px` (framed preview) · `18px` (cards, nodes) ·
-  `20px` (large media frames) · `9999px` (all buttons, pills, tags). `--radius` = `0.5rem` for
-  shadcn-derived components.
+  `20px` (large media frames) · `clamp(24px, 3vw, 36px)` = `--radius-panel` (full-width drench
+  panels inset from the page edge, e.g. the Targets section) · `9999px` (all buttons, pills,
+  tags). `--radius` = `0.5rem` for shadcn-derived components.
 - **Shadow:** card `0 4px 32px rgba(13, 43, 26, 0.08)` · framed preview `0 24px 64px
   rgba(30, 38, 17, 0.12)` · harvest button (see §1) · olive button hover `0 8px 24px
   rgba(30, 38, 17, 0.2)`. Shadows are soft and low-contrast; no hard drop shadows.

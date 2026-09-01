@@ -131,17 +131,9 @@ export const hero = {
 } as const;
 
 export const metrics = {
-  sectionLabel: {
-    id: 'Target Fase 1',
-    en: 'Phase 1 Targets',
-  },
   sectionTitle: {
     id: 'Skala Rantai Pasok Berkelanjutan Berbasis Data & Aset Fisik',
     en: 'Data-Driven Sustainable Supply Chain Powered by Physical Assets',
-  },
-  sectionSubtitle: {
-    id: 'Angka-angka berikut adalah target operasional yang akan dipenuhi pada fase pertama.',
-    en: 'The figures below are operational targets to be achieved in the first phase.',
   },
   items: {
     id: [
