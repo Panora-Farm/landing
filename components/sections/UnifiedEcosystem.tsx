@@ -9,6 +9,7 @@ import {
   Handle,
   Position,
   MarkerType,
+  useReactFlow,
   type Edge,
   type Node,
   type NodeProps,
@@ -65,6 +66,26 @@ function EcoNode({ data }: NodeProps<EcoNodeType>) {
 
 const nodeTypes = { eco: EcoNode };
 
+const FIT_OPTIONS = { padding: 0.02, minZoom: 0.4, maxZoom: 2.4 } as const;
+
+/** Keep the graph filling the canvas as the viewport width changes. */
+function FitOnResize() {
+  const { fitView } = useReactFlow();
+  useEffect(() => {
+    let frame = 0;
+    const refit = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => fitView(FIT_OPTIONS));
+    };
+    window.addEventListener('resize', refit);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('resize', refit);
+    };
+  }, [fitView]);
+  return null;
+}
+
 function EcoFlowCanvas({
   nodes,
   edges,
@@ -79,7 +100,7 @@ function EcoFlowCanvas({
         edges={edges}
         nodeTypes={nodeTypes}
         fitView
-        fitViewOptions={{ padding: 0.06, minZoom: 0.55, maxZoom: 1 }}
+        fitViewOptions={FIT_OPTIONS}
         proOptions={{ hideAttribution: true }}
         nodesDraggable={false}
         nodesConnectable={false}
@@ -92,7 +113,9 @@ function EcoFlowCanvas({
         zoomOnPinch={false}
         zoomOnDoubleClick={false}
         preventScrolling={false}
-      />
+      >
+        <FitOnResize />
+      </ReactFlow>
     </div>
   );
 }
@@ -152,7 +175,7 @@ export function UnifiedEcosystem() {
       rawNodes.map((node, i) => ({
         id: node.num,
         type: 'eco',
-        position: { x: i * 380, y: 0 },
+        position: { x: i * 372, y: 0 },
         draggable: false,
         selectable: false,
         data: {
