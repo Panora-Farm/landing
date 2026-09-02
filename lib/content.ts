@@ -43,17 +43,19 @@ export const nav = {
 export const hero = {
   titleLines: {
     id: [
-      { text: 'Komoditas Indonesia,', accent: false, emphasize: [] },
-      { text: 'terverifikasi dari titik nol.', accent: false, emphasize: ['titik', 'nol'] },
+      { text: 'Tech-Enabled Commodity', accent: false, emphasize: [] },
+      { text: 'Aggregator & Transparent', accent: false, emphasize: [] },
+      { text: 'Supply Chain Infrastructure', accent: true, emphasize: [] },
     ],
     en: [
-      { text: 'Indonesian commodities,', accent: false, emphasize: [] },
-      { text: 'verified from point zero.', accent: false, emphasize: ['point', 'zero'] },
+      { text: 'Tech-Enabled Commodity', accent: false, emphasize: [] },
+      { text: 'Aggregator & Transparent', accent: false, emphasize: [] },
+      { text: 'Supply Chain Infrastructure', accent: true, emphasize: [] },
     ],
   },
   description: {
-    id: 'Menghubungkan petani kecil dengan pembeli B2B global lewat data asal-usul first-mile yang terverifikasi.',
-    en: 'Connecting smallholder farms to global B2B buyers with verified first-mile origin data.',
+    id: 'Menghubungkan petani kecil Indonesia dengan pembeli B2B global melalui data rantai pasok anti-manipulasi yang terverifikasi dan memenuhi standar kepatuhan regulasi ekspor.',
+    en: 'Connecting Indonesian smallholder farmers with global B2B buyers through verified, tamper-proof supply chain data that meets export regulatory compliance standards.',
   },
   primaryCta: {
     label: {
@@ -579,9 +581,9 @@ export const commodities = {
       {
         id: 'greenhouse',
         title: 'Hortikultura Greenhouse',
-        tag: 'Hidroponik B2B',
+        tag: 'Greenhouse',
         description:
-          'Hasil panen hidroponik premium untuk pasokan B2B domestik dengan standar kualitas terjamin.',
+          'Hasil panen produk premium untuk pasokan B2B domestik dengan standar kualitas terjamin.',
         image: '/hero2.jpg',
       },
     ],
@@ -613,9 +615,9 @@ export const commodities = {
       {
         id: 'greenhouse',
         title: 'Greenhouse Horticulture',
-        tag: 'B2B hydroponic',
+        tag: 'Greenhouse',
         description:
-          'Premium hydroponic harvests for domestic B2B supply with guaranteed quality standards.',
+          'Premium product harvest for domestic B2B supply with guaranteed quality standards.',
         image: '/hero2.jpg',
       },
     ],
