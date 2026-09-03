@@ -86,7 +86,9 @@ body {
 body {
   font-family: var(--sans);
   color: var(--olive-950);
-  overflow-x: hidden;
+  /* clip, not hidden: hidden makes body a scroll container and breaks
+     position: sticky on descendants (the pinned targets panel). */
+  overflow-x: clip;
   font-feature-settings: "ss01";
   -webkit-font-smoothing: antialiased;
 }
@@ -611,9 +613,44 @@ nav.site-nav {
   padding: clamp(72px, 12vh, 148px) clamp(24px, 6vw, 80px);
 }
 
+.targets-viewport {
+  position: relative;
+}
+
 .targets-inner {
   max-width: 1240px;
   margin: 0 auto;
+}
+
+/* Pinned mode: the olive panel holds still in the viewport while its
+   contents translate past. Toggled by KeyStats when there's room to pin. */
+.targets-section[data-pinned='true'] {
+  position: relative;
+  /* Fixed navbar height (logo 44 + 2×18 padding + 1 border). ponytail: knob —
+     bump if the nav grows. */
+  --nav-h: 81px;
+}
+
+.targets-section[data-pinned='true'] .targets-panel {
+  position: sticky;
+  top: calc(var(--nav-h) + clamp(12px, 3vw, 24px));
+  height: calc(100svh - var(--nav-h) - 2 * clamp(12px, 3vw, 24px));
+  padding: clamp(40px, 7vh, 72px) clamp(24px, 6vw, 80px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.targets-section[data-pinned='true'] .targets-viewport {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.targets-section[data-pinned='true'] .targets-inner {
+  position: absolute;
+  inset: 0 0 auto 0;
+  will-change: transform;
 }
 
 .targets-panel .targets-eyebrow {

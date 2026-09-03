@@ -560,7 +560,7 @@ export const commodities = {
         tag: 'Arabica & Robusta',
         description:
           'Greenbean Arabica Garut & Robusta Sumatra Selatan pilihan dengan keterlacakan asal-usul lahan.',
-        image: '/coffee.jpg',
+        image: '/commodity/Coffee.jpeg',
       },
       {
         id: 'cocoa',
@@ -568,7 +568,7 @@ export const commodities = {
         tag: 'Biji fermentasi',
         description:
           'Biji kakao berkualitas tinggi dengan keterlacakan asal-usul lahan dan sertifikasi petani kecil.',
-        image: '/chili.jpg',
+        image: '/commodity/Cocoa.jpeg',
       },
       {
         id: 'coconut',
@@ -576,7 +576,7 @@ export const commodities = {
         tag: 'VCO & turunan',
         description:
           'Produk olahan kelapa terstandarisasi untuk pasar internasional dengan asal-usul terverifikasi.',
-        image: '/padi.jpg',
+        image: '/commodity/Coconut.jpeg',
       },
       {
         id: 'greenhouse',
@@ -584,7 +584,7 @@ export const commodities = {
         tag: 'Greenhouse',
         description:
           'Hasil panen produk premium untuk pasokan B2B domestik dengan standar kualitas terjamin.',
-        image: '/hero2.jpg',
+        image: '/commodity/Greenhouse.jpeg',
       },
     ],
     en: [
@@ -594,7 +594,7 @@ export const commodities = {
         tag: 'Arabica & Robusta',
         description:
           'Premium Garut Arabica & South Sumatra Robusta green beans with full land-origin traceability.',
-        image: '/coffee.jpg',
+        image: '/commodity/Coffee.jpeg',
       },
       {
         id: 'cocoa',
@@ -602,7 +602,7 @@ export const commodities = {
         tag: 'Fermented beans',
         description:
           'High-grade cocoa beans with land-origin traceability and smallholder farmer certification.',
-        image: '/chili.jpg',
+        image: '/commodity/Cocoa.jpeg',
       },
       {
         id: 'coconut',
@@ -610,7 +610,7 @@ export const commodities = {
         tag: 'VCO & derivatives',
         description:
           'Standardized coconut processed products for international markets with verified origins.',
-        image: '/padi.jpg',
+        image: '/commodity/Coconut.jpeg',
       },
       {
         id: 'greenhouse',
@@ -618,7 +618,7 @@ export const commodities = {
         tag: 'Greenhouse',
         description:
           'Premium product harvest for domestic B2B supply with guaranteed quality standards.',
-        image: '/hero2.jpg',
+        image: '/commodity/Greenhouse.jpeg',
       },
     ],
   },
