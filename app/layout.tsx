@@ -13,7 +13,7 @@ const hanken = Hanken_Grotesk({
 export const metadata: Metadata = {
   title: metadataContent.title.id,
   description: metadataContent.description.id,
-  icons: { icon: '/favicon.ico' },
+  icons: { icon: '/icon.png', apple: '/icon.png' },
 };
 
 export default function RootLayout({
