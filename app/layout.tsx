@@ -20,7 +20,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="id" className={hanken.variable} suppressHydrationWarning>
+    <html lang="en" className={hanken.variable} suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );
