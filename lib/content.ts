@@ -568,7 +568,7 @@ export const commodities = {
         tag: 'Biji fermentasi',
         description:
           'Biji kakao berkualitas tinggi dengan keterlacakan asal-usul lahan dan sertifikasi petani kecil.',
-        image: '/commodity/Cocoa.jpeg',
+        image: '/commodity/Cocoa2.jpeg',
       },
       {
         id: 'coconut',
